@@ -9,7 +9,7 @@ const authAsync = async (token) => {
                 Authorization: `Bearer ${token}`
             },
         });
-        console.log('Response from Google: ', response);
+        // console.log('Response from Google: ', response);
 
         if (response.status === 200) {
             return response.data;

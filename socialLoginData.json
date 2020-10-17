@@ -1,0 +1,25 @@
+{
+    "FACEBOOK": {
+        "name": "Kartick Dey KD",
+        "email": "kartickdeykd3@gmail.com",
+        "picture": {
+            "data": {
+                "height": 50,
+                "is_silhouette": false,
+                "url": "https://platform-lookaside.fbsbx.com/platform/profilepic/?asid=2923987211155958&height=50&width=50&ext=1605538292&hash=AeQBp2-6Coaq6p2fdYw",
+                "width": 50
+            }
+        },
+        "id": "2923987211155958"
+    },
+    "GOOGLE": {
+        "id": "115868756317469922758",
+        "email": "soumen.dey02052003@gmail.com",
+        "verified_email": true,
+        "name": "Soumen Dey",
+        "given_name": "Soumen",
+        "family_name": "Dey",
+        "picture": "https://lh5.googleusercontent.com/-CzP-H82WxWM/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuck8dFmtBdvlw9IZKmSvSCXyMeF7vQ/s96-c/photo.jpg",
+        "locale": "en"
+    }
+}
