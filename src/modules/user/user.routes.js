@@ -1,9 +1,10 @@
 const router = require('express').Router();
-const {check, validationResult } = require('express-validator')
+const { userAuth } = require('./user');
 
-const createUser = require('./user.controller');
+const { createUser, getUserById } = require('./user.controller');
 
 router.post('/', createUser);
+router.get('/me', userAuth, getUserById)
 
 
 module.exports = router;

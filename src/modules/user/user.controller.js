@@ -1,8 +1,9 @@
 const Yup = require('yup');
 
 const AuthProvider = require('../../services/authProvider');
-const getOrCreateUser = require('./user');
+const { getOrCreateUser, getUserByIdFromDB } = require('./user');
 const PROVIDER_ENUM = require('./provider.enum');
+const Authservice = require('../../services/Auth');
 
 const createUser = async (req, res) => {
     const { token, provider } = req.body;
@@ -24,11 +25,28 @@ const createUser = async (req, res) => {
         res.status(400).json({ message: 'Error from provide' });
         }
         const user = await getOrCreateUser(data, provider);
-        res.status(200).json({ message: 'SUCCESS', user: user });
+        const jwtToken = Authservice.createJwtToken(user);
+        res.status(200).json({ message: 'SUCCESS', jwtToken: jwtToken });
     } catch (error) {
         console.log('Error while calling provider api: ', error)
         res.status(400).json({ message: error.message });        
     }
 };
 
-module.exports = createUser;
+const getUserById = async (req, res) => {
+    try {
+        if (req.user) {
+            const userInfo = await getUserByIdFromDB(req.user._id);
+            res.status(200).json(userInfo);
+        } else {
+            res.status(400).json({ message: 'No user found'});
+        }
+    } catch (error) {
+        res.status(400).json({ message: error.message });
+    }
+};
+
+module.exports = {
+    createUser,
+    getUserById
+};
