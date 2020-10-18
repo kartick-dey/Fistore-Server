@@ -9,7 +9,6 @@ const { PROVIDER_ENUM } = require('./provider.enum');
 
  const Schema = mongoose.Schema;
 const userSchema = new Schema({
-    _id: Schema.Types.ObjectId,
     name: {
         type: String,
         required: true
