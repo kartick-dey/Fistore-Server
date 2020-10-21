@@ -7,7 +7,7 @@ const { PROVIDER_ENUM } = require('./provider.enum');
  * User Schema
  */
 
- const Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 const userSchema = new Schema({
     name: {
         type: String,

@@ -1,28 +1,5 @@
 const UserModel = require('./user.model');
 const BuildUserInfo = require('./buildUser');
-const Auth = require('../../services/Auth');
-
-
-const userAuth = async (req, res, next) => {
-    const token = Auth.getTokenFromHeaders(req);
-
-    if (!token) {
-        req.user = null;
-
-        return res.sendStatus(401);
-    }
-    
-    const userInfo = await UserModel.findById(token.id);
-
-    if (!userInfo) {
-        req.user = null;
-
-        return res.sendStatus(401);
-    }
-
-    req.user = userInfo;
-    next();
-};
 
 const getOrCreateUser = async (data, provider) => {
     const user = BuildUserInfo(data, provider);
@@ -63,6 +40,5 @@ const getUserByIdFromDB = async (userId) => {
 
 module.exports = {
     getOrCreateUser,
-    userAuth,
     getUserByIdFromDB
 };

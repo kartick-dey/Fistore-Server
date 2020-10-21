@@ -1,7 +1,7 @@
 const Yup = require('yup');
 
 const AuthProvider = require('../../services/authProvider');
-const { getOrCreateUser, getUserByIdFromDB } = require('./user');
+const { getOrCreateUser, getUserByIdFromDB } = require('./user.service');
 const PROVIDER_ENUM = require('./provider.enum');
 const Authservice = require('../../services/Auth');
 
