@@ -7,21 +7,16 @@ const getOrCreateUser = async (data, provider) => {
     try {
         const userInDB = await UserModel.findOne({ email: user.email });
 
-        const { provider, ...userData } = user;
-
         if (!userInDB) {
-            const userInfo = await UserModel.create({
-                ...userData,
-                provider: [provider]
-            })
+            const userInfo = await UserModel.create(user)
             return userInfo;
         }
-        const providerExist = userInDB.provider.find(element => element.uid === user.provider.uid && element.type === user.provider.type,);
-        if (providerExist) {
+        if (userInDB.providerUid === user.providerUid && userInDB.provider === user.provider) {
             return userInDB
         }
 
-        userInDB.provider.push(user.provider)
+        userInDB.providerUid = user.providerUid;
+        userInDB.provider = user.provider;
         await userInDB.save()
         return userInDB;
     } catch (error) {

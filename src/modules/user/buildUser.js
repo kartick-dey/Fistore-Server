@@ -3,24 +3,22 @@ const buildUserInfo = (data, provider) => {
         name: '',
         email: '',
         picture: '',
-        provider: {
-            uid: '',
-            type: ''
-        }, 
+        providerUid: '',
+        provider: '' 
     }
 
     if (provider === 'GOOGLE') {
         user.name = data.name;
         user.email = data.email;
         user.picture = data.picture;
-        user.provider.uid = data.id;
-        user.provider.type = provider;
+        user.providerUid = data.id;
+        user.provider = provider;
     } else if (provider === 'FACEBOOK') {
         user.name = data.name;
         user.email = data.email;
         user.picture = data.picture.data.url;
-        user.provider.uid = data.id;
-        user.provider.type = provider;
+        user.providerUid = data.id;
+        user.provider = provider;
     }
 
     return user;

@@ -22,12 +22,14 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    provider: [
-        {
-            uid: { type: String, required: true },
-            type: { required: true, type: String, enum: PROVIDER_ENUM },
-        },
-    ],
+    providerUid: { 
+        type: String, 
+        required: true 
+    },
+    provider: { 
+        required: true, 
+        type: String, enum: PROVIDER_ENUM 
+    },
 }, { timestamps: true });
 
 
