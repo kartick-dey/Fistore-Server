@@ -31,7 +31,7 @@ const upload = multer({
 });
 const type = upload.single('image');
 
-routes.post('/', verifyToken, type, createProduct);
-routes.get('/', verifyToken, getAllProduct);
+routes.post('/', type, createProduct); // verifyToken
+routes.get('/', getAllProduct);
 
 module.exports = routes
