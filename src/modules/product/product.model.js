@@ -13,10 +13,10 @@ const productSchema = new Schema({
         type: String,
         required: true
     },
-    fishType: {
+    fishCategory: {
         type: String,
         required: true,
-        enum: PRODUCT_ENUM.FISHTYPE_ENUM
+        enum: PRODUCT_ENUM.FISHCATEGORY_ENUM
     },
     price: {
         type: Number,

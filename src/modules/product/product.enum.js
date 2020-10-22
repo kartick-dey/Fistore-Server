@@ -1,7 +1,7 @@
-const FISHTYPE_ENUM = ['FISH', 'SPAWN', 'SEED', 'AQURIUM'];
-const UNIT_ENUM = ['GM', 'KG', 'PIECE']
+const FISHCATEGORY_ENUM = ['FISH', 'SPAWN', 'SEED', 'AQURIUM'];
+const UNIT_ENUM = ['GM', 'KG', 'PIECE', 'PACKET']
 
 module.exports = {
-    FISHTYPE_ENUM,
+    FISHCATEGORY_ENUM,
     UNIT_ENUM
 };

@@ -2,7 +2,7 @@ const buildProduct = (bodyData, image) => {
     const product = {
         userId: bodyData.userId,
         fishName: bodyData.fishName,
-        fishType: bodyData.fishType,
+        fishCategory: bodyData.fishType,
         price: +bodyData.price,
         unit: bodyData.unit,
         image: image,
