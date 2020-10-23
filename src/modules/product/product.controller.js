@@ -5,11 +5,13 @@ const PRODUCT_ENUM = require('./product.enum');
 const { createProductInDB, getAllProductFromDB } = require('./product.service')
 
 const createProduct = async (req, res) => {
+    console.log("REquest: ", req.body);
+    console.log("REquest: ", req.file);
     if (!req.file) {
-        res.status(400).json({ message: `please upload 'jpg', 'jpeg' and 'png' type image.`});
+        res.status(400).json({ message: 'Please upload a image.'});
         return;
     }
-    const { userId, fishName, fishType, price, unit, location, contact} = req.body;
+    const { userId, fishName, fishCategory, price, unit, location, contact} = req.body;
 
     const bodySchema = Yup.object().shape({
         userId: Yup.string().required(),
@@ -25,7 +27,7 @@ const createProduct = async (req, res) => {
         await bodySchema.validate({ userId, fishName, fishCategory, price, unit, location, contact });
         const productData = buildProduct(req.body, req.file.path );
         const productInfo = await createProductInDB(productData);
-        res.status(200).json({ message: 'Successfully saved', data: productInfo});
+        res.status(200).json(productInfo);
     } catch (error) {
         console.log("Error while create a product: ", error);
         res.status(400).json({ messsage: error.message });
