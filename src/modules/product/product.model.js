@@ -9,6 +9,14 @@ const productSchema = new Schema({
         type: String,
         required: true
     },
+    username: {
+        type: String,
+        required: true
+    },
+    fisheryName: {
+        type: String,
+        required: true
+    },
     fishName: {
         type: String,
         required: true
@@ -27,6 +35,10 @@ const productSchema = new Schema({
         required: true,
         enum: PRODUCT_ENUM.UNIT_ENUM
     },
+    availableTill: {
+        type: Date,
+        required: true
+    },
     location: {
         type: String,
         required: true
@@ -39,6 +51,10 @@ const productSchema = new Schema({
         type: Number,
         required: true
     },
+    description: {
+        type: Number,
+        required: true
+    }
 }, { timestamps: true });
 
 module.exports = mongoose.model('products', productSchema);
