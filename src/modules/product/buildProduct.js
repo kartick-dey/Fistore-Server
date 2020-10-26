@@ -1,6 +1,6 @@
 const buildProduct = (bodyData, image) => {
     let description = null;
-    if (bodyData.description === '') {
+    if (bodyData.description === '' || bodyData.description === null || bodyData.description === undefined) {
         description = `Fish farming or pisciculture involves raising fish commercially in tanks or enclosures 
         such as fish ponds, usually for food. A facility that releases juvenile fish into the wild for recreational
         fishing or to supplement a species natural numbers is generally referred to as a fish hatchery.`

@@ -9,7 +9,7 @@ const createProduct = async (req, res) => {
         res.status(400).json({ message: 'Please upload a image.'});
         return;
     }
-    const { userId, fishName, fishCategory, price, unit, location, contact} = req.body;
+    const { userId, username, fisheryName, fishName, fishCategory, price, unit, location, contact} = req.body;
 
     const bodySchema = Yup.object().shape({
         userId: Yup.string().required(),
@@ -20,12 +20,12 @@ const createProduct = async (req, res) => {
         price: Yup.number().required(),
         unit: Yup.string().oneOf(PRODUCT_ENUM.UNIT_ENUM).required(),
         location: Yup.string().required(),
-        availableTill: Yup.date().required(),
+        // availableTill: Yup.string().required(),
         contact: Yup.number().required()
     });
 
     try {
-        await bodySchema.validate({ userId, username, fisheryName, fishName, fishCategory, price, unit, location, availableTill, contact });
+        await bodySchema.validate({ userId, username, fisheryName, fishName, fishCategory, price, unit, location, contact });
         const productData = buildProduct(req.body, req.file.path );
         const productInfo = await createProductInDB(productData);
         res.status(200).json(productInfo);

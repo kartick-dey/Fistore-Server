@@ -35,10 +35,6 @@ const productSchema = new Schema({
         required: true,
         enum: PRODUCT_ENUM.UNIT_ENUM
     },
-    availableTill: {
-        type: Date,
-        required: true
-    },
     location: {
         type: String,
         required: true
