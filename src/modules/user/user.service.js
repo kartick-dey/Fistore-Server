@@ -1,23 +1,25 @@
 const UserModel = require('./user.model');
-const BuildUserInfo = require('./buildUser');
 
-const getOrCreateUser = async (data, provider) => {
-    const user = BuildUserInfo(data, provider);
+const getOrCreateUser = async (user) => {
 
     try {
-        const userInDB = await UserModel.findOne({ email: user.email });
+        let userInDB = null;
+        if (user.provider === 'PHONE') {
+            userInDB = await UserModel.findOne({phone: user.phone});
+        }
+        userInDB = await UserModel.findOne({ email: user.email });
 
         if (!userInDB) {
-            const userInfo = await UserModel.create(user)
+            const userInfo = await UserModel.create(user);
             return userInfo;
         }
         if (userInDB.providerUid === user.providerUid && userInDB.provider === user.provider) {
-            return userInDB
+            return userInDB;
         }
 
         userInDB.providerUid = user.providerUid;
         userInDB.provider = user.provider;
-        await userInDB.save()
+        await userInDB.save();
         return userInDB;
     } catch (error) {
         throw error;

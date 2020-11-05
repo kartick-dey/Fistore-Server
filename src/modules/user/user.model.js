@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const { string } = require('yup');
 
 const { PROVIDER_ENUM } = require('./provider.enum');
 
@@ -10,24 +11,25 @@ const { PROVIDER_ENUM } = require('./provider.enum');
 const Schema = mongoose.Schema;
 const userSchema = new Schema({
     name: {
-        type: String,
-        required: true
+        type: String
+    },
+    fisheryName: {
+        type: String
     },
     email: {
         type: String,
-        required: true,
         unique: true
     },
+    phone: {
+        type: String
+    },
     picture: {
-        type: String,
-        required: true
+        type: String
     },
     providerUid: { 
-        type: String, 
-        required: true 
+        type: String
     },
-    provider: { 
-        required: true, 
+    provider: {
         type: String, enum: PROVIDER_ENUM 
     },
 }, { timestamps: true });
